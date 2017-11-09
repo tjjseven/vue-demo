@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .DS_Store
 node_modules/
 dist/
@@ -16,6 +16,5 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
-=======
-node_modules
->>>>>>> a4cd8a6caf58651eb644dd8fdab748e8cd75a147
+
+
