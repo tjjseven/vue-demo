@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿# 问题：
+﻿	# 问题：
  	1，克隆远程仓库后，删掉本地文件，新建文件并修改后提交失败
 	提示：fatal: Not a git repository (or any of the parent directories) 
 
@@ -52,8 +51,3 @@
 	Please try running this command again as root/Administrator.
 	于是清理缓存npm cache clean --force(v5以上使用)，使用管理员权限均无效，最后根据网友提示降级npm，
 	npm install -g npm@5.2.0解决问题 github讨论https://github.com/npm/npm/issues/17671
-
-	
-=======
-
->>>>>>> 801687eba542d12b54957ecb193bf81a596aec5a
