@@ -1,10 +1,10 @@
 <template>
-  <div class="footer">
-    <router-link to="/">主页</router-link>
-    <router-link to="/circle">圈子</router-link>
-    <router-link to="/shop">商店</router-link>
-    <router-link to="/about">关于</router-link>
-  </div>
+  <ul class="footer" >
+    <li flex="main:center cross:center"><router-link to="/">主页</router-link></li>
+    <li flex="main:center cross:center"><router-link to="/circle">圈子</router-link></li>
+    <li flex="main:center cross:center"><router-link to="/shop">商店</router-link></li>
+    <li flex="main:center cross:center"><router-link to="/about">关于</router-link></li>
+  </ul>
 </template>
 
 <script>
@@ -23,13 +23,14 @@ export default {
 
 
 ul {
-  list-style-type: none;
-  padding: 0;
+  display: flex;
+  background: #f8f8f8;
 }
 
 li {
-  display: inline-block;
-  margin: 0 10px;
+  flex: 1;
+  height: 2rem;
+  font-size: .6rem;
 }
 
 a {

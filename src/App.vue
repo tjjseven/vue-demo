@@ -4,7 +4,10 @@
     <!--<img src="./assets/logo.png">-->
 
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <router-view />
+    <div class="content">
+       <router-view />
+    </div>
+
     <!--公共页脚-->
     <Foot />
 
@@ -21,13 +24,27 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+body,ul,li{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+#app{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.content{
+  flex: 1;
+}
+a{
+  text-decoration: none;
 }
 </style>

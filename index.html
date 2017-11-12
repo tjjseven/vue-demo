@@ -8,4 +8,17 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script type="text/javascript">
+    (function(win,doc){
+      change();
+      function change(){
+        var HL = doc.documentElement.style.fontSize = doc.documentElement.clientWidth *20/320+'px';
+        console.log(document.querySelector("html").style.fontSize+"as")
+      }
+      win.addEventListener('resize',change,false);
+      /* 这个是移动端设备横屏、竖屏转换时触发的事件处理函数 */
+      win.addEventListener('orientationchange',change,false);
+
+    })(window,document);
+  </script>
 </html>
