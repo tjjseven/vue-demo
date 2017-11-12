@@ -1,0 +1,11 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><title>vue-demo</title><link href=./static/css/app.ca38db043495c72a6afe171de1a8659e.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=./static/js/manifest.1bff9ea966071d8a4491.js></script><script type=text/javascript src=./static/js/vendor.dea99b46850552e56485.js></script><script type=text/javascript src=./static/js/app.cc32d3adbca45cc2082a.js></script></body><script type=text/javascript>(function(win,doc){
+      change();
+      function change(){
+        var HL = doc.documentElement.style.fontSize = doc.documentElement.clientWidth *20/320+'px';
+        console.log(document.querySelector("html").style.fontSize+"as")
+      }
+      win.addEventListener('resize',change,false);
+      /* 这个是移动端设备横屏、竖屏转换时触发的事件处理函数 */
+      win.addEventListener('orientationchange',change,false);
+
+    })(window,document);</script></html>
