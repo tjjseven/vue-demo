@@ -13,7 +13,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/vue-demo',
       name: 'Index',
       component: Index
     },

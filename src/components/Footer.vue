@@ -1,6 +1,6 @@
 <template>
   <ul class="footer" >
-    <li flex="main:center cross:center"><router-link to="/">主页</router-link></li>
+    <li flex="main:center cross:center"><router-link to="/vue-demo">主页</router-link></li>
     <li flex="main:center cross:center"><router-link to="/circle">圈子</router-link></li>
     <li flex="main:center cross:center"><router-link to="/shop">商店</router-link></li>
     <li flex="main:center cross:center"><router-link to="/about">关于</router-link></li>

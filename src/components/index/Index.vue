@@ -11,7 +11,7 @@ export default {
   name: 'Index',
   data () {
     return {
-      msg: '主页'
+      msg: '首页'
     }
   }
 }
