@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>vue-demo</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-  <script type="text/javascript">
-    (function(win,doc){
-      change();
-      function change(){
-        var HL = doc.documentElement.style.fontSize = doc.documentElement.clientWidth *20/320+'px';
-        console.log(document.querySelector("html").style.fontSize+"as")
-      }
-      win.addEventListener('resize',change,false);
-      /* 这个是移动端设备横屏、竖屏转换时触发的事件处理函数 */
-      win.addEventListener('orientationchange',change,false);
+<!DOCTYPE html><html><head><meta charset=utf-8><title>vue-demo</title><meta name=viewport content="width=device-width,user-scalable=no"><link href=./dist/static/css/app.ac2452e2ceeeddcb851ef665c7cce87d.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=./dist/static/js/manifest.58bbc53708c9377c3ed9.js></script><script type=text/javascript src=./dist/static/js/vendor.6998c2f6917cfbcb334e.js></script><script type=text/javascript src=./dist/static/js/app.778af239742047dc678b.js></script></body><script type=text/javascript>(function(win,doc){
+  change();
+  function change(){
+    var HL = doc.documentElement.style.fontSize = doc.documentElement.clientWidth *20/320+'px';
+    /*iphone 5为基准20px*/
+    console.log(document.querySelector("html").style.fontSize+" iphone5")
+  }
+  win.addEventListener('resize',change,false);
+  /* 这个是移动端设备横屏、竖屏转换时触发的事件处理函数 */
+  win.addEventListener('orientationchange',change,false);
 
-    })(window,document);
-  </script>
-</html>
+})(window,document);</script><script type=text/javascript src=http://at.alicdn.com/t/font_485512_jv8pb95i81qyqfr.js></script></html>

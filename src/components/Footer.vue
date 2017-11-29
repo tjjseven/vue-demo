@@ -1,9 +1,17 @@
 <template>
   <ul class="footer" >
-    <li flex="main:center cross:center"><router-link to="/vue-demo">主页</router-link></li>
-    <li flex="main:center cross:center"><router-link to="/circle">圈子</router-link></li>
-    <li flex="main:center cross:center"><router-link to="/shop">商店</router-link></li>
-    <li flex="main:center cross:center"><router-link to="/about">关于</router-link></li>
+    <li @click="sendMsg(footMsg.findex)" flex="main:center cross:center">
+      <router-link to="/vue-demo">{{footMsg.findex}}</router-link>
+    </li>
+    <li @click="sendMsg(footMsg.fcircle)" flex="main:center cross:center">
+      <router-link to="/circle">{{footMsg.fcircle}}</router-link>
+    </li>
+    <li @click="sendMsg(footMsg.fshop)" flex="main:center cross:center">
+      <router-link to="/shop">{{footMsg.fshop}}</router-link>
+    </li>
+    <li @click="sendMsg(footMsg.fabout)" flex="main:center cross:center">
+      <router-link to="/about">{{footMsg.fabout}}</router-link>
+    </li>
   </ul>
 </template>
 
@@ -12,7 +20,17 @@ export default {
   name: 'Footer',
   data () {
     return {
-      msg: ''
+      footMsg : {
+        findex : '主页',
+        fcircle : '圈子',
+        fshop : '商店',
+        fabout : '关于'
+      }
+    }
+  },
+  methods : {
+    sendMsg(arg){
+      this.$emit("listenMsg",arg)
     }
   }
 }
@@ -23,17 +41,12 @@ export default {
 
 
 ul {
-  display: flex;
   background: #f8f8f8;
 }
 
 li {
-  flex: 1;
   height: 2rem;
-  font-size: .6rem;
 }
 
-a {
-  color: #42b983;
-}
+
 </style>

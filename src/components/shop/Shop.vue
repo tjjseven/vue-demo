@@ -1,17 +1,27 @@
 <template>
   <div class="shop">
-    <h1>{{ msg }}</h1>
-    <h2></h2>
-
+    <Navs @listenNav="indexMsg"/>
+    <List/>
   </div>
 </template>
 
 <script>
+import Navs from '../Nav'
+import List from '../List'
 export default {
   name: 'Shop',
+  components : {
+    Navs,
+    List
+  },
   data () {
     return {
       msg: '商店'
+    }
+  },
+  methods :{
+    indexMsg(data){
+      this.$emit("listenVue",data)
     }
   }
 }
@@ -19,21 +29,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

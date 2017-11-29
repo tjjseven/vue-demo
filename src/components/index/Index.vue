@@ -1,17 +1,30 @@
 <template>
   <div class="index">
-    <h1>{{ msg }}</h1>
-
-
+    <Carousel/>
+    <Navs @listenNav="indexMsg"/>
+    <List/>
   </div>
 </template>
 
 <script>
+import Carousel from './Carousel';
+import Navs from '../Nav'
+import List from '../List'
 export default {
-  name: 'Index',
+  name: 'index',
+  components : {
+    Carousel,
+    Navs,
+    List
+  },
   data () {
     return {
-      msg: '首页'
+
+    }
+  },
+  methods :{
+    indexMsg(data){
+      this.$emit("listenVue",data)
     }
   }
 }
@@ -19,21 +32,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 
-a {
-  color: #42b983;
-}
 </style>
