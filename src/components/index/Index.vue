@@ -2,7 +2,10 @@
   <div class="index">
     <Carousel/>
     <Navs @listenNav="indexMsg"/>
-    <List/>
+    <keep-alive include="List">
+      <!--<component :is="currentView"></component>-->
+      <List @listenList="indexMsg"/>
+    </keep-alive>
   </div>
 </template>
 
@@ -19,7 +22,7 @@ export default {
   },
   data () {
     return {
-
+      currentView: 'List'
     }
   },
   methods :{

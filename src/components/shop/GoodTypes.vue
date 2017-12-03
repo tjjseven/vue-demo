@@ -21,7 +21,9 @@ export default {
   * */
   created: function() {
     var id = this.$route.query.id;
-//    console.log(id)
+    console.log("query:"+id)
+    var pa = this.$route.params;
+    console.log("params:",pa)
     this.msg = this.$store.state.author
   }
 }

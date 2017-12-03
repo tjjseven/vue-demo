@@ -6,9 +6,16 @@
     <!-- 路由匹配到的组件将渲染在这里 -->
     <div class="content">
       <!--<keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们-->
+      <!--<keep-alive>-->
+        <!--<router-view @listenVue="vueMsg"/>-->
+      <!--</keep-alive>-->
+
       <keep-alive>
-        <router-view @listenVue="vueMsg"/>
+        <router-view v-if="$route.meta.keepAlive" @listenVue="vueMsg"></router-view>
       </keep-alive>
+      <router-view v-if="!$route.meta.keepAlive" @listenVue="vueMsg"></router-view>
+
+
     </div>
 
     <!--公共页脚-->
@@ -37,7 +44,7 @@ export default {
     },
     vueMsg(data){
       this.headerC = data;
-      console.log(data)
+//      console.log(data)
     },
     headerMsg(data){
       this.headerC = data;
@@ -66,7 +73,7 @@ body,html,#app{
 body{
   background:url('assets/img/1.jpg') no-repeat;
 }
-body,ul,ol,li,p{
+body,ul,ol,li,p,h1,h2,h3,h4{
   padding: 0;
   margin: 0;
   list-style-type: none;

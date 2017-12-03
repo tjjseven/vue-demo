@@ -1,6 +1,7 @@
 <template>
   <ul class="header" >
-    <li v-if="headerC=='说说' || headerC=='饼干'|| headerC=='面包'|| headerC=='茶点'|| headerC=='点心'" flex="main:center cross:center">
+    <li v-if="headerC=='说说' || headerC=='饼干'|| headerC=='面包'|| headerC=='茶点'|| headerC=='点心'||headerC=='详情'"
+        flex="main:center cross:center">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-disclosureindicator"></use>
       </svg>
@@ -94,7 +95,7 @@ export default {
   },
   created(){
     this.$watch('headerC', function(newVal, oldVal){
-      console.log("新值"+newVal+"，旧值"+oldVal);//这里再感受下值拿到了没
+//      console.log("新值"+newVal+"，旧值"+oldVal);//这里再感受下值拿到了没
       this.oldHeaderC = oldVal
       this.newHeaderC = newVal
     });

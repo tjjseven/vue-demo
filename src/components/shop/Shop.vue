@@ -1,7 +1,10 @@
 <template>
   <div class="shop">
     <Navs @listenNav="indexMsg"/>
-    <List/>
+    <!--<List/>-->
+    <keep-alive include="List">
+      <component :is="currentView" @listenList="indexMsg"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -16,7 +19,8 @@ export default {
   },
   data () {
     return {
-      msg: '商店'
+      msg: '商店',
+      currentView: 'List'
     }
   },
   methods :{

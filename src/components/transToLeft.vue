@@ -19,7 +19,7 @@
     props:["isLeft"],
     directives : {
       'is-left' : function(value) {
-        console.log(value)
+//        console.log(value)
       }
     },
     methods:{

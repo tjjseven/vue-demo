@@ -8,6 +8,7 @@ import Shop from '@/components/shop/Shop'
 import About from '@/components/about/About'
 import GoodTypes from '@/components/shop/GoodTypes'
 import Commit from '@/components/circle/Commit'
+import Details from '@/components/Details'
 
 Vue.use(Router);
 
@@ -19,7 +20,10 @@ export default new Router({
       path: '/vue-demo',
       // redirect: '/vue-demo',
       name: 'Index',
-      component: Index
+      component: Index,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/circle',
@@ -39,20 +43,11 @@ export default new Router({
       //   {
       //     path: 'biscuit',
       //     component: GoodTypes
-      //   },
-      //   {
-      //     path: 'bread',
-      //     component: GoodTypes
-      //   },
-      //   {
-      //     path: 'tea',
-      //     component: GoodTypes
-      //   },
-      //   {
-      //     path: 'pastry',
-      //     component: GoodTypes
-      //   },
+      //   }
       // ]
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/shop/:id',
@@ -64,6 +59,14 @@ export default new Router({
       path: '/about',
       name: 'About',
       component: About
+    },
+    {
+      path: '/details',
+      name: 'Details',
+      component: Details,
+      meta: {
+        keepAlive: false // 不需要被缓存
+      }
     },
     // { path:"*", redirect:"/home" }
   ]
