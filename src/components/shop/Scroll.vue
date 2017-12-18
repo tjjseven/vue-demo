@@ -121,7 +121,7 @@ export default{
 
 }
   /*联网加载列表数据*/
-//禁止PC浏览器拖拽图片,避免与下拉刷新冲突;如果仅在移动端使用,可删除此代码
+//禁止PC浏览器拖拽图片,避免与下拉刷新冲突;如果仅在移动端使用,可删除
 //document.ondragstart=function() {return false;}
 </script>
 
