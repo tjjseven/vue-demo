@@ -1,17 +1,20 @@
 <template>
   <div class="good_types">
-    <h1>{{ msg }}</h1>
-
+    <Scroll/>
   </div>
 </template>
 
 <script>
-export default {
+  import Scroll from './Scroll'
+  export default {
   name: 'good_types',
   data () {
     return {
-      msg: '商店'
+      msg: '商店1'
     }
+  },
+  components:{
+    Scroll
   },
   /*
   * beforecreated：el 和 data 并未初始化
@@ -31,5 +34,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.good_types{
+  height: 100%;
+  width: 100%;
+}
 </style>

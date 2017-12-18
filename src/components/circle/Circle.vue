@@ -39,6 +39,10 @@ export default {
     changeDiv(arg){
       this.display=arg;
     }
+  },
+  mounted(){
+    console.log(this.$route);
+
   }
 }
 </script>

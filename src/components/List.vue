@@ -1,18 +1,24 @@
 <template>
   <div class="list">
-    <p v-if="!this.$store.state.listData">loading...</p>
+    <div v-if="!this.$store.state.listData" :style="{textAlign:'center',width:'100%'}">
+      <div class="spinner"></div>
+      <span :style="{color:'#fff'}">loading...</span>
+    </div>
     <div v-else @click="ListMsg(listDetails)" class="list_item" v-for="(listItem, index) in this.$store.state.listData" :key="index">
       <!--router-link中链接如果是‘/’开始就是从根路由开始，如果开始不带‘/’，则从当前路由开始-->
       <router-link :to="{path:'/details',query:{details:listItem.id}}" tag="div" class="routerDiv" >
         <img :src="listItem.image" alt="">
-        <p flex="main:center">{{listItem.text}}</p>
+        <p flex="main:center">{{listItem.constellation}}</p>
         <div class="commitDiv" flex="corss:center">
           <img :src="listItem.image" alt="">
           <span>{{listItem.province}}</span>
         </div>
         <div class="commitLove">
-          <i></i>
-          <span>取消关注</span>
+            <svg class="icon" aria-hidden="true" :style="{color:listItem.follow  ? '#ffa6a6' : '#000'}">
+              <use xlink:href="#icon-xihuan"></use>
+            </svg>
+          <span v-if="listItem.follow" :style="{color:'#ffa6a6'}">已关注</span>
+          <span v-else>未关注</span>
         </div>
       </router-link>
     </div>
@@ -25,36 +31,45 @@
     name: 'List',
     data () {
       return {
-        listData: 'loading',
-        listDetails : "详情"
+        listDetails : "详情",
       }
     },
-    created(){
-
-    },
+//    created(){
+//
+//    },
     mounted(){
-      console.log(this.$store.state.listMount);
-      if(this.$store.state.listMount)
+      console.log("mounted");
+      /*keep-alive下 如果list组件只加载一次，无需if*/
+      if(this.$store.state.listAjax)
       this.$ajax({
         method: 'get',
         url: 'http://mockjs',
       }).then(function(res){
-//        console.log(res);
-        this.listData = res.data.result;
-        this.$store.state.listData = res.data.result;
+//        this.$store.state.listData = res.data.result;
 //        console.log(this.$store.state.listData)
+        this.$store.commit('SAVE_LISTDATA', res.data.result);
       }.bind(this))
         .catch(function(err){
-        console.log(err)
-      });
-      this.$store.state.listMount=false;
-    },
-    activated(){
+          console.log(err)
+        });
+      this.$store.state.listAjax=false;
 
+    },
+    /*keep-alive组件激活*/
+    activated(){
+      console.log("activated");
     },
     methods:{
       ListMsg(data){
-        this.$emit("listenList",data)
+        this.$emit("listenList",data);
+      }
+    },
+    computed:{
+      followState(){
+        console.log("计算属性");
+//        此处如何获取当前index？？
+//        var follow = this.$store.state.listData[this.$store.state.listData.id].follow
+
       }
     }
   }
@@ -97,10 +112,10 @@
     margin-left: .3rem;
   }
   .commitLove{
-    padding:.2rem;
+    padding:.2rem 1rem;
     border-top:1px solid #e4e4e4;
   }
   .commitLove>span{
-    margin-left: 3rem;
+    margin-left: 1rem;
   }
 </style>

@@ -4,7 +4,7 @@
     <!--<img src="./assets/logo.png">-->
     <Headers :headerC="headerC" @listenHeader="headerMsg"/>
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <div class="content">
+    <div class="content" id="content">
       <!--<keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们-->
       <!--<keep-alive>-->
         <!--<router-view @listenVue="vueMsg"/>-->
@@ -98,6 +98,8 @@ img{
 }
 .content{
   flex: 1;
+  height: 100%;
+  width: 100%;
   overflow-y: scroll;
 }
 a{
@@ -114,6 +116,7 @@ a.actClass{
   overflow: hidden;
   /*color: #fff;*/
 }
+/*遮罩*/
 .shade{
   width: 100%;
   position: absolute;
@@ -123,5 +126,24 @@ a.actClass{
   background: rgba(0,0,0,.6);
   z-index: 998;
   transition: display .3s;
+}
+/*loading*/
+@keyframes rotate-forever {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  margin: 1rem auto .5rem;
+  -webkit-animation: rotate-forever 1s infinite linear;
+  animation: rotate-forever 1s infinite linear;
+  height: 30px;
+  width: 30px;
+  border: 4px solid #b6b6b6;
+  border-right-color: transparent;
+  border-radius: 50%;
 }
 </style>

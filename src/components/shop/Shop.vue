@@ -1,7 +1,7 @@
 <template>
   <div class="shop">
     <Navs @listenNav="indexMsg"/>
-    <!--<List/>-->
+    <!--<List @listenList="indexMsg"/>-->
     <keep-alive include="List">
       <component :is="currentView" @listenList="indexMsg"></component>
     </keep-alive>
@@ -27,6 +27,12 @@ export default {
     indexMsg(data){
       this.$emit("listenVue",data)
     }
+  },
+  beforeRouteLeave(to, from, next){
+    console.log("离开shop路由");
+    let position = document.querySelector("#content").scrollTop;
+    this.$store.commit('SAVE_POSITION', position); //离开路由时把位置存起来
+    next()
   }
 }
 </script>

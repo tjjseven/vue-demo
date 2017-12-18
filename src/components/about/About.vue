@@ -36,6 +36,10 @@ export default {
         {aboutIcon:"#icon-activity",aboutName:"我的活动"},
         {aboutIcon:"#icon-huiyuan",aboutName:"会员俱乐部"},
         {aboutIcon:"#icon-settings",aboutName:"设置"},
+        {aboutIcon:"#icon-settings",aboutName:"设置"},
+        {aboutIcon:"#icon-settings",aboutName:"设置"},
+        {aboutIcon:"#icon-settings",aboutName:"设置"},
+        {aboutIcon:"#icon-settings",aboutName:"设置"},
       ]
     }
   }

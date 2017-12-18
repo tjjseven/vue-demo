@@ -13,11 +13,13 @@ import Details from '@/components/Details'
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',//HBuilder打包app不能使用
   linkActiveClass: 'actClass',
+  saveScrollPosition: true,
   routes: [
     {
-      path: '/vue-demo',
+      // path: '/vue-demo',
+      path:'/',
       // redirect: '/vue-demo',
       name: 'Index',
       component: Index,
@@ -58,7 +60,10 @@ export default new Router({
     {
       path: '/about',
       name: 'About',
-      component: About
+      component: About,
+      meta: {
+        keepAlive: false // 不需要被缓存
+      }
     },
     {
       path: '/details',
@@ -69,5 +74,25 @@ export default new Router({
       }
     },
     // { path:"*", redirect:"/home" }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    // console.log(to)
+    if (!savedPosition){
+      document.querySelector("#content").scrollTop=0;
+      // console.log("无值"+savedPosition)
+    }else{
+      // document.querySelector("#content").scrollTop=this.$store.state.posState;
+      // console.log("返回有值")
+    }
+
+    // if (savedPosition) {
+    //   return savedPosition
+    //
+    // } else {
+    //   return { x: 0, y: 0 }
+    // }
+  //作为单页面来说并没有发生页面切换，所以scroll的位置是不变的
+
+  }
 })
+

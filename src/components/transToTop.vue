@@ -33,7 +33,7 @@
   .trans_to_top{
     width:100%;
     background: #f5f5f5;
-    transform: translateY(100%);
+    /*transform: translateY(100%);*/
     position: absolute;
     left: 0;
     bottom:0;

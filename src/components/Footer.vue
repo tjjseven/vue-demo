@@ -1,16 +1,16 @@
 <template>
   <ul class="footer" >
-    <li @click="sendMsg(footMsg.findex)" flex="main:center cross:center">
-      <router-link to="/vue-demo">{{footMsg.findex}}</router-link>
+    <li @click="sendMsg(footMsg.findex)">
+      <router-link to="/" flex="main:center cross:center">{{footMsg.findex}}</router-link>
     </li>
-    <li @click="sendMsg(footMsg.fcircle)" flex="main:center cross:center">
-      <router-link to="/circle">{{footMsg.fcircle}}</router-link>
+    <li @click="sendMsg(footMsg.fcircle)">
+      <router-link to="/circle" flex="main:center cross:center">{{footMsg.fcircle}}</router-link>
     </li>
-    <li @click="sendMsg(footMsg.fshop)" flex="main:center cross:center">
-      <router-link to="/shop">{{footMsg.fshop}}</router-link>
+    <li @click="sendMsg(footMsg.fshop)">
+      <router-link to="/shop" flex="main:center cross:center">{{footMsg.fshop}}</router-link>
     </li>
-    <li @click="sendMsg(footMsg.fabout)" flex="main:center cross:center">
-      <router-link to="/about">{{footMsg.fabout}}</router-link>
+    <li @click="sendMsg(footMsg.fabout)">
+      <router-link to="/about" flex="main:center cross:center">{{footMsg.fabout}}</router-link>
     </li>
   </ul>
 </template>
@@ -47,6 +47,9 @@ ul {
 li {
   height: 2rem;
 }
-
+ul.footer>li>a{
+  width: 100%;
+  height:100%;
+}
 
 </style>

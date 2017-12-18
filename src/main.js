@@ -23,5 +23,22 @@ new Vue({
   store,
   router,
   template: '<App/>',
-  components: { App }
-})
+  components: { App },
+  watch:{
+    '$route':function(to,from){
+        // console.log("路由变化")
+    }
+  }
+});
+router.beforeEach((to, from, next) => {
+  // alert("路由变化");
+
+
+  // console.log(to.meta.keepAlive)
+  if(to.meta.keepAlive===false){
+    // document.querySelector("#content").scrollTop=0
+
+  }
+  next()
+});
+

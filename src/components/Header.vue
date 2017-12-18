@@ -1,11 +1,11 @@
 <template>
   <ul class="header" >
     <li v-if="headerC=='说说' || headerC=='饼干'|| headerC=='面包'|| headerC=='茶点'|| headerC=='点心'||headerC=='详情'"
-        flex="main:center cross:center">
+        flex="main:center cross:center" @click="goBack">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-disclosureindicator"></use>
       </svg>
-      <a :style="{color:'#fff'}" @click="goBack">返回</a>
+      <a :style="{color:'#fff'}">返回</a>
     </li>
     <li v-else flex="main:center cross:center">
       <svg class="icon" aria-hidden="true">
@@ -80,9 +80,9 @@ export default {
       this.$emit("listenHeader","说说")
     },
     goBack(){
-      console.log(this.headerC);
+//      console.log(this.headerC);
       this.$router.go(-1);
-
+      console.log(history.state)
       this.$emit("listenHeader",this.oldHeaderC)
 
     },

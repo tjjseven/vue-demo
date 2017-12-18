@@ -8,7 +8,16 @@ const store = new Vuex.Store({
   state: {
     author: 'A.Q.I',
     listData : '',
-    listMount : true,
+    listAjax : true,
+    posState : ''
+  },
+  mutations: {
+    SAVE_POSITION (state, payload) {
+      state.posState = payload
+    },
+    SAVE_LISTDATA(state ,payload){
+      state.listData = payload
+    }
   }
 });
 
