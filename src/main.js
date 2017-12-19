@@ -9,9 +9,15 @@ import Vuex from 'vuex'
 import store from './vuex/store'
 Vue.use(Vuex);
 
+//引入自定义js过滤方法文件
+// var myFilter = require('./assets/js/filter.js')
+import myFilter from './assets/js/filter.js'
+//注册全局
+Vue.prototype.myFilter = myFilter;
 
 import '../static/mock/mock.js';
 import 'flex.css';
+
 import axios from 'axios';
 Vue.prototype.$ajax = axios;
 
@@ -32,13 +38,10 @@ new Vue({
 });
 router.beforeEach((to, from, next) => {
   // alert("路由变化");
-
-
   // console.log(to.meta.keepAlive)
-  if(to.meta.keepAlive===false){
-    // document.querySelector("#content").scrollTop=0
-
-  }
+  // if(to.meta.keepAlive===false){
+  //
+  // }
   next()
 });
 

@@ -51,10 +51,7 @@
 
       this.followMsg = this.follow ? "取消关注" : "+ 我关注";
     },
-    directives : {
-      '' : function(value) {
-      }
-    },
+
     methods:{
       followMe(){
         this.follow = !this.follow;
@@ -66,7 +63,8 @@
       },
       saveCount(){
         this.count += 1;
-        this.dsDate[this.num].count = this.count;
+//        this.dsDate[this.num].count = this.count;
+        this.$set(this.dsDate[this.num],'count',this.count)
       }
     },
     beforeRouteLeave(to, from, next){
