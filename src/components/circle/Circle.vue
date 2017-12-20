@@ -31,7 +31,7 @@
       </ul>
     </div>
     <div v-show="display==msg.care">
-      <p v-if="!followList">没有关注</p>
+      <p v-if="!followFlag">没有关注</p>
       <ul v-else class="care_ul">
         <li v-for="(followList, index) in followList" :key="index">
           <img :src="followList.image" alt="">
@@ -75,20 +75,22 @@ export default {
         return this.myFilter.orderBy(this.loveList, 'count',-1 )
     },
     countFlag() {
-//      var flag = null;
       for (var i = 0; i < this.circleData.length; i++) {
         if (this.circleData[i].count) {
-//          flag = true;
-//          break;
           return true
         } else {
-//          flag = false;
-//          break;
           return false
         }
       }
-//      return flag;
-//      console.log(flag)
+    },
+    followFlag(){
+      for (var i = 0; i < this.circleData.length; i++) {
+        if (this.circleData[i].follow) {
+          return true
+        } else {
+          return false
+        }
+      }
     }
   },
   methods:{
@@ -112,6 +114,11 @@ export default {
 <style scoped>
   .circle{
     background: #fff;
+  }
+  .circle_ul{
+    position: absolute;
+    top:2rem;
+    left: 0;
   }
   .circle_ul>li{
     height: 2.5rem;

@@ -108,7 +108,6 @@ export default {
   ul {
     background: #ffa6a6;
     color: #fff;
-    /*position: relative;*/
   }
 
   ul>li {
