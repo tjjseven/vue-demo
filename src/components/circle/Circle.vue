@@ -115,11 +115,6 @@ export default {
   .circle{
     background: #fff;
   }
-  .circle_ul{
-    position: absolute;
-    top:2rem;
-    left: 0;
-  }
   .circle_ul>li{
     height: 2.5rem;
     font-size: .7rem;
