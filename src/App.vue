@@ -1,6 +1,6 @@
 <!--默认主页文件-->
 <template>
-  <div id="app">
+  <div id="app" flex="dir:top">
     <!--<img src="./assets/logo.png">-->
     <Headers :headerC="headerC" @listenHeader="headerMsg"/>
     <!-- 路由匹配到的组件将渲染在这里 -->
@@ -78,12 +78,6 @@ body,ul,ol,li,p,h1,h2,h3,h4{
   margin: 0;
   list-style-type: none;
 }
-ul{
-  display: flex;
-}
-li{
-  flex: 1;
-}
 h1, h2 {
   font-weight: normal;
 }
@@ -92,9 +86,7 @@ img{
   display: block;
 }
 #app{
-  display: flex;
   min-height: 100vh;
-  flex-direction: column;
 }
 .content{
   flex: 1;
@@ -109,6 +101,7 @@ a{
 a.actClass{
   color:#ffa6a6;
 }
+
 .icon {
   width: 1em; height: 1em;
   vertical-align: -0.15em;

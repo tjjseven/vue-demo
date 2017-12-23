@@ -6,7 +6,7 @@
         <p>签到</p>
       </div>
     </div>
-    <ul>
+    <ul flex="box:mean">
       <li flex="main:center cross:center">关注(7)</li>
       <li flex="main:center cross:center">粉丝(7)</li>
       <li flex="main:center cross:center">收藏(7)</li>
@@ -35,10 +35,6 @@ export default {
         {aboutIcon:"#icon-7",aboutName:"收货地址"},
         {aboutIcon:"#icon-activity",aboutName:"我的活动"},
         {aboutIcon:"#icon-huiyuan",aboutName:"会员俱乐部"},
-        {aboutIcon:"#icon-settings",aboutName:"设置"},
-        {aboutIcon:"#icon-settings",aboutName:"设置"},
-        {aboutIcon:"#icon-settings",aboutName:"设置"},
-        {aboutIcon:"#icon-settings",aboutName:"设置"},
         {aboutIcon:"#icon-settings",aboutName:"设置"},
       ]
     }

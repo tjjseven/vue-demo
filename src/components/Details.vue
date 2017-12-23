@@ -154,6 +154,7 @@
       background: #e21313;
       display: inline-block;
       color: #fff;
+      border-radius: 15rem;
     }
   }
 </style>

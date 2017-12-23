@@ -5,7 +5,7 @@
     <div class="mescroll-bounce">
       <!--展示上拉加载的数据列表-->
       <ul id="dataList" class="data-list">
-        <li v-for="pd in pdlist">
+        <li v-for="pd in pdlist" flex>
           <img :src="pd.dataImage" alt="">
            <div class="dataList_right">
              <p>{{pd.longText}}</p>
@@ -131,16 +131,17 @@ export default{
   }
   ul>li{
     padding: .5rem .5rem;
-    display: flex;
-    align-items: flex-start;
+    /*display: flex;*/
+    /*align-items: flex-start;*/
     border-bottom: 1px solid #e4e4e4;
   }
   li>img{
     margin-right: .2rem;
     width: 20%;
+    height: 20%;
   }
   .dataList_right{
-    flex: 1;
+    /*flex: 1;*/
     p{
       margin-bottom: .3rem;
     }

@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav" >
+  <ul class="nav" flex="box:mean">
     <li @click="navMsg('饼干')">
       <router-link :to="{path:'/shop/biscuit',query:{id:'饼干'}}">
         <img src="../assets/img/bg_03.png" alt="">

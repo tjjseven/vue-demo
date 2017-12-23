@@ -1,6 +1,6 @@
 <template>
   <div class="circle">
-    <ul class="circle_ul">
+    <ul class="circle_ul" flex="box:mean">
       <li @click="changeDiv(msg.news)" flex="main:center cross:center"
       :style="{color : display==msg.news ? '#ffa6a6' : '#000',
       borderBottomColor : display==msg.news ? '#ffa6a6' : '#e6e6e6'}">
@@ -16,11 +16,13 @@
       borderBottomColor : display==msg.care ? '#ffa6a6' : '#e6e6e6'}">
         {{msg.care}}</li>
     </ul>
-    <div v-show="display==msg.news">new</div>
-    <div v-show="display==msg.hot">
-      <p v-if="!countFlag">没有喜欢</p>
+    <div v-show="display==msg.news" class="news_div">
+      <p flex="main:center">没有最新...</p>
+    </div>
+    <div v-show="display==msg.hot" class="hot_div">
+      <p v-if="!countFlag" flex="main:center">没有喜欢...</p>
       <ul v-else class="hot_ul">
-        <li v-for="(loveList, index) in orderList" :key="index">
+        <li v-for="(loveList, index) in orderList" :key="index" flex>
           <img :src="loveList.image" alt="">
           <div class="hot_right">
             <p>{{loveList.constellation}}</p>
@@ -30,10 +32,10 @@
         </li>
       </ul>
     </div>
-    <div v-show="display==msg.care">
-      <p v-if="!followFlag">没有关注</p>
+    <div v-show="display==msg.care" class="care_div">
+      <p v-if="!followFlag" flex="main:center">没有关注...</p>
       <ul v-else class="care_ul">
-        <li v-for="(followList, index) in followList" :key="index">
+        <li v-for="(followList, index) in followList" :key="index" flex>
           <img :src="followList.image" alt="">
           <div class="care_right">
             <p>{{followList.constellation}}</p>
@@ -120,29 +122,26 @@ export default {
     font-size: .7rem;
     border-bottom:1px solid #e6e6e6;
   }
-  ul.care_ul,ul.hot_ul{
-    display: block;
-  }
   ul.care_ul>li,ul.hot_ul>li{
     padding: .5rem .5rem;
-    display: flex;
-    align-items: flex-start;
     border-bottom: 1px solid #e4e4e4;
   }
   ul.care_ul>li>img,ul.hot_ul>li>img{
     margin-right: .2rem;
     width: 20%;
-  }
-  .care_right,.hot_right{
-    flex: 1;
+    height: 20%;
   }
   .hot_right{
     position: relative;
+    flex: 1;
   }
   .hot_right>span{
     position: absolute;
     top:.3rem;
     right: 1rem;
     color: #ffa6a6;
+  }
+  .hot_div>p,.care_div>p,.news_div>p{
+    padding: 1rem;
   }
 </style>

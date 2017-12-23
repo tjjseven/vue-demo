@@ -1,6 +1,18 @@
 <template>
   <div class="Commit">
-    commit
+    <div class="author" flex>
+      <img src="" alt="">
+      <div class="author_left">
+        <h2>木子李</h2>
+        <p>人喜欢，人关注</p>
+      </div>
+    </div>
+    <p>说说你的心情</p>
+    <textarea name="comTextarea" id="comTextarea" placeholder="请输入内容"></textarea>
+    <div class="pic">
+      上传图片
+    </div>
+    <input type="submit" id="comSub" value="确定发布">
   </div>
 </template>
 
@@ -33,5 +45,40 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .Commit{
+    background: #fff;
+    padding: .6rem;
+  }
+  .author>img{
+    width: 20%;
+    height: 20%;
+  }
+  .Commit>p{
+    margin: 1rem 0 .5rem;
+  }
+  .author_left>p{
+    margin-top: .3rem;
+  }
+  textarea{
+    width: 100%;
+    margin: 0 auto;
+    resize: none;
+    border-radius: .2rem;
+    height: 3rem;
+    border: 1px solid #ccc;
+    padding: .5rem;
+    outline: none;
+    box-sizing: border-box;
+  }
+  input{
+    display: block;
+    width: 90%;
+    background: #ffa6a6;
+    padding: .5rem;
+    border: none;
+    border-radius: .2rem;
+    margin: 5% auto;
+    font-size: .7rem;
+    color: #fff;
+  }
 </style>

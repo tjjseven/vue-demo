@@ -1,5 +1,5 @@
 <template>
-  <ul class="footer" >
+  <ul class="footer" flex="box:mean">
     <li @click="sendMsg(footMsg.findex)">
       <router-link to="/" flex="main:center cross:center">{{footMsg.findex}}</router-link>
     </li>

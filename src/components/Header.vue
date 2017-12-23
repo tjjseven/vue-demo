@@ -1,5 +1,5 @@
 <template>
-  <ul class="header" >
+  <ul class="header" flex="dir:left">
     <li v-if="headerC=='说说' || headerC=='饼干'|| headerC=='面包'|| headerC=='茶点'|| headerC=='点心'||headerC=='详情'"
         flex="main:center cross:center" @click="goBack">
       <svg class="icon" aria-hidden="true">
