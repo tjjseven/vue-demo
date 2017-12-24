@@ -9,6 +9,7 @@ import About from '@/components/about/About'
 import GoodTypes from '@/components/shop/GoodTypes'
 import Commit from '@/components/circle/Commit'
 import Details from '@/components/Details'
+import Login from '@/components/Login'
 
 Vue.use(Router);
 
@@ -62,7 +63,8 @@ export default new Router({
       name: 'About',
       component: About,
       meta: {
-        keepAlive: false // 不需要被缓存
+        keepAlive: false, // 不需要被缓存
+        auth: false
       }
     },
     {
@@ -73,7 +75,12 @@ export default new Router({
         keepAlive: false // 不需要被缓存
       }
     },
-    // { path:"*", redirect:"/home" }
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
+    },
+    { path:"*", redirect:"/login" }
   ],
   scrollBehavior (to, from, savedPosition) {
     // console.log(to)

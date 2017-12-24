@@ -1,10 +1,32 @@
 <template>
   <div class="about">
-    <div class="about_tie">
-      <img src="" alt="">
-      <div>
-        <p>签到</p>
+    <div class="about_tie" flex>
+      <img class="author_pic" src="" alt="">
+      <div class="about_author">
+        <h2>木子李</h2>
+        <p>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-dianzan"></use>
+          </svg>
+          <span>25</span>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-xihuan"></use>
+          </svg>
+          <span>25</span>
+        </p>
+        <p>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-huiyuan"></use>
+          </svg>
+          <span>开通会员</span>
+        </p>
       </div>
+      <p>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-comment-pen"></use>
+        </svg>
+        <span>签到处</span>
+      </p>
     </div>
     <ul flex="box:mean">
       <li flex="main:center cross:center">关注(7)</li>
@@ -48,7 +70,16 @@ export default {
     background: #fff;
     margin-bottom: .7rem;
   }
-  .about_list{
+  .about_author{
+    flex: 1;
+  }
+  .about_author p{
+    margin-top: .5rem;
+  }
+  .about_author span{
+    margin-right: 1rem;
+  }
+  .about_list,.about_tie{
     padding: .6rem;
   }
   .about_list>span{

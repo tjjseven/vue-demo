@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import TransToLeft from './transToLeft.vue'
-import TransToTop from './transToTop.vue'
+import TransToLeft from './TransToLeft.vue'
+import TransToTop from './TransToTop.vue'
 export default {
   name: 'Header',
   components:{

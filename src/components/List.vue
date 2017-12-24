@@ -47,6 +47,7 @@
       }).then(function(res){
 //        this.$store.state.listData = res.data.result;
 //        console.log(this.$store.state.listData)
+        /*将结果commit到mutations中*/
         this.$store.commit('SAVE_LISTDATA', res.data.result);
       }.bind(this))
         .catch(function(err){

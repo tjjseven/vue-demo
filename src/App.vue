@@ -101,13 +101,19 @@ a{
 a.actClass{
   color:#ffa6a6;
 }
-
+/*author*/
+.author_pic{
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #ffa6a6;
+  border-radius: 50%;
+  margin-right: .5rem;
+}
 .icon {
   width: 1em; height: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
-  /*color: #fff;*/
 }
 /*遮罩*/
 .shade{

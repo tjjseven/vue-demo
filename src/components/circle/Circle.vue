@@ -17,7 +17,39 @@
         {{msg.care}}</li>
     </ul>
     <div v-show="display==msg.news" class="news_div">
-      <p flex="main:center">没有最新...</p>
+      <p v-if="newCommit" flex="main:center">没有最新...</p>
+      <ul class="commit_list">
+        <li>
+          <div flex class="com_top">
+            <img class="author_pic" src="" alt="">
+            <div class="com_author">
+              <h2>木子李</h2>
+              <p>1991</p>
+            </div>
+            <div class="con_about">
+              <p>
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-dianzan"></use>
+                </svg>
+                <span>点赞</span>
+              </p>
+              <p>
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-comment-pen"></use>
+                </svg>
+                <span>评论</span>
+              </p>
+            </div>
+          </div>
+          <div class="com_btm">
+            <p>我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</p>
+            <div class="com_btm_reply">
+              <div class="three_title"></div>
+              <p>我是回复</p>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
     <div v-show="display==msg.hot" class="hot_div">
       <p v-if="!countFlag" flex="main:center">没有喜欢...</p>
@@ -59,7 +91,8 @@ export default {
         care: "关注"
       },
       display : "最新",
-      circleData : this.$store.state.listData
+      circleData : this.$store.state.listData,
+      newCommit : ''
     }
   },
   computed:{
@@ -143,5 +176,39 @@ export default {
   }
   .hot_div>p,.care_div>p,.news_div>p{
     padding: 1rem;
+  }
+  .commit_list{
+    padding:.5rem ;
+  }
+  .com_author{
+    flex: 1;
+  }
+  .com_author>p{
+    margin-top: .2rem;
+  }
+  .con_about>p{
+    padding-right: .5rem;
+    display: inline-block;
+  }
+  .com_btm{
+    margin: .8rem 0 0 2.5rem;
+  }
+  .com_btm_reply{
+    background-color: #e7e7e7;
+    border-radius: .2rem;
+    padding: 3%;
+    position: relative;
+    margin-top: .5rem;
+  }
+  .three_title{
+    position: absolute;
+    top: -.9rem;
+    left: 1rem;
+    width: 0;
+    height: 0;
+    border-top: .5rem solid transparent;
+    border-right: .5rem solid transparent;
+    border-bottom: .5rem solid #e7e7e7;
+    border-left: .5rem solid transparent;
   }
 </style>

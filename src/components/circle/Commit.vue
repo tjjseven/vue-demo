@@ -1,7 +1,7 @@
 <template>
-  <div class="Commit">
+  <div class="commit">
     <div class="author" flex>
-      <img src="" alt="">
+      <img class="author_pic" src="" alt="">
       <div class="author_left">
         <h2>木子李</h2>
         <p>人喜欢，人关注</p>
@@ -10,7 +10,7 @@
     <p>说说你的心情</p>
     <textarea name="comTextarea" id="comTextarea" placeholder="请输入内容"></textarea>
     <div class="pic">
-      上传图片
+      <input type="file" id="" value="上传图片">
     </div>
     <input type="submit" id="comSub" value="确定发布">
   </div>
@@ -45,19 +45,15 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .Commit{
+  .commit{
     background: #fff;
     padding: .6rem;
   }
-  .author>img{
-    width: 20%;
-    height: 20%;
-  }
-  .Commit>p{
+  .commit>p{
     margin: 1rem 0 .5rem;
   }
   .author_left>p{
-    margin-top: .3rem;
+    margin-top: .2rem;
   }
   textarea{
     width: 100%;
