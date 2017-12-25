@@ -17,14 +17,14 @@
         {{msg.care}}</li>
     </ul>
     <div v-show="display==msg.news" class="news_div">
-      <p v-if="newCommit" flex="main:center">没有最新...</p>
-      <ul class="commit_list">
-        <li>
+      <p v-if="!this.$store.state.commitList.length" flex="main:center">没有最新...</p>
+      <ul v-else class="commit_list">
+        <li v-for="(commitList, index) in commitList" :key="index">
           <div flex class="com_top">
             <img class="author_pic" src="" alt="">
             <div class="com_author">
-              <h2>木子李</h2>
-              <p>1991</p>
+              <h2>{{commitList.comAuthor}}</h2>
+              <p>{{commitList.comTime}}</p>
             </div>
             <div class="con_about">
               <p>
@@ -42,10 +42,10 @@
             </div>
           </div>
           <div class="com_btm">
-            <p>我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</p>
+            <p>{{commitList.comContent}}</p>
             <div class="com_btm_reply">
               <div class="three_title"></div>
-              <p>我是回复</p>
+              <p>{{commitList.comReply}}</p>
             </div>
           </div>
         </li>
@@ -80,69 +80,87 @@
 </template>
 
 <script>
-
-export default {
-  name: 'Circle',
-  data () {
-    return {
-      msg: {
-        news: "最新",
-        hot: "热门",
-        care: "关注"
+  import pubVue from '../../assets/js/pubVue'
+  export default {
+    name: 'Circle',
+    data () {
+      return {
+        msg: {
+          news: "最新",
+          hot: "热门",
+          care: "关注"
+        },
+        display : "最新",
+        circleData : this.$store.state.listData,
+        newCommit : '',
+        commitFlag : '',
+        commitList : this.$store.state.commitList
+//          [
+//          {comAuthor:"木子李",comTime:"1991",comContent:"我是评论",comReply:"我是回复"}
+//        ]
+      }
+    },
+    computed:{
+      followList(){
+        return this.circleData.filter(function (item) {
+          return item.follow
+        })
       },
-      display : "最新",
-      circleData : this.$store.state.listData,
-      newCommit : ''
-    }
-  },
-  computed:{
-    followList(){
-      return this.circleData.filter(function (item) {
-        return item.follow
-      })
-    },
-    loveList(){
-      return this.circleData.filter(function (item) {
-        return item.count
-      })
-    },
-    orderList(){
-        return this.myFilter.orderBy(this.loveList, 'count',-1 )
-    },
-    countFlag() {
-      for (var i = 0; i < this.circleData.length; i++) {
-        if (this.circleData[i].count) {
-          return true
-        } else {
-          return false
+      loveList(){
+        return this.circleData.filter(function (item) {
+          return item.count
+        })
+      },
+      orderList(){
+          return this.myFilter.orderBy(this.loveList, 'count',-1 )
+      },
+      countFlag() {
+        for (var i = 0; i < this.circleData.length; i++) {
+          if (this.circleData[i].count) {
+            return true
+          } else {
+            return false
+          }
+        }
+      },
+      followFlag(){
+        for (var i = 0; i < this.circleData.length; i++) {
+          if (this.circleData[i].follow) {
+            return true
+          } else {
+            return false
+          }
         }
       }
     },
-    followFlag(){
-      for (var i = 0; i < this.circleData.length; i++) {
-        if (this.circleData[i].follow) {
-          return true
-        } else {
-          return false
-        }
+    methods:{
+      changeDiv(arg){
+        this.display=arg;
       }
-    }
-  },
-  methods:{
-    changeDiv(arg){
-      this.display=arg;
-    }
-  },
-  directives : {
+    },
+    directives : {
 
 
-  },
-  mounted(){
-//    console.log(this.$route);
+    },
+    mounted(){
+//      var self = this;
+//      pubVue.$on("commitInfo",(msg)=>{
+//        self.newCommit = msg
+////        this.commitList.push(msg)
+//      })
+//      console.log(this.newCommit)
+//      var commits = JSON.parse(sessionStorage.getItem("commitInfo"))
+//      this.commitList.unshift(commits)
 
+//      console.log(this.commitList)
+    },
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+  //       通过 `vm` 访问组件实例
+        vm.$emit("listenVue","圈子")
+      })
+    },
   }
-
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -179,6 +197,9 @@ export default {
   }
   .commit_list{
     padding:.5rem ;
+  }
+  .commit_list>li{
+    margin-bottom:1rem ;
   }
   .com_author{
     flex: 1;

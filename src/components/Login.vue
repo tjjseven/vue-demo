@@ -37,9 +37,18 @@
       subData(){
         this.$store.dispatch(USER_LOGIN,this.user);
         console.log(JSON.parse(sessionStorage.getItem('user')))
+        /*跳转到登录之前的页面*/
         this.$router.replace({ path: this.$route.query.redirect })
       }
-    }
+    },
+    computed:{
+    },
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+//       通过 `vm` 访问组件实例
+        vm.$emit("listenVue","登录")
+      })
+    },
   }
 </script>
 

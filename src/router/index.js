@@ -31,12 +31,18 @@ export default new Router({
     {
       path: '/circle',
       name: 'Circle',
-      component: Circle
+      component: Circle,
+      meta: {
+        auth: false // 不需要登录
+      }
     },
     {
       path:'/circle/commit',
       name:'Commit',
-      component:Commit
+      component:Commit,
+      meta: {
+        auth: true // 需要登录
+      }
     },
     {
       path: '/shop',
@@ -49,13 +55,17 @@ export default new Router({
       //   }
       // ]
       meta: {
-        keepAlive: true // 需要被缓存
+        keepAlive: true, // 需要被缓存
+        auth: false // 不需要登录
       }
     },
     {
       path: '/shop/:id',
       name:'GoodTypes',
       component: GoodTypes,
+      meta: {
+        auth: false // 不需要登录
+      },
       props: (route) => ({ query: route.query.id })
     },
     {
@@ -64,7 +74,7 @@ export default new Router({
       component: About,
       meta: {
         keepAlive: false, // 不需要被缓存
-        auth: false
+        auth: true // 需要登录
       }
     },
     {
@@ -72,7 +82,8 @@ export default new Router({
       name: 'Details',
       component: Details,
       meta: {
-        keepAlive: false // 不需要被缓存
+        keepAlive: false, // 不需要被缓存
+        auth: false // 不需要登录
       }
     },
     {
@@ -88,7 +99,6 @@ export default new Router({
       document.querySelector("#content").scrollTop=0;
       // console.log("无值"+savedPosition)
     }else{
-      // document.querySelector("#content").scrollTop=this.$store.state.posState;
       // console.log("返回有值")
     }
 

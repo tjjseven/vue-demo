@@ -10,11 +10,12 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 const store = new Vuex.Store({
   // 定义状态
   state: {
-    author: 'A.Q.I',
-    listData : '',
-    listAjax : true,
-    posState : '',
-    user: JSON.parse(sessionStorage.getItem('user')) || {},
+    author: 'A.Q.I',//作者
+    listData : '',//index列表信息
+    listAjax : true,//判断是否发送ajax
+    posState : '',//位置信息
+    user: JSON.parse(sessionStorage.getItem('user')) || {},//用户信息
+    commitList : []//评论列表信息
   },
   /*mutations更改state并保存到state*/
   mutations: {
@@ -25,6 +26,9 @@ const store = new Vuex.Store({
     /*保存数据*/
     SAVE_LISTDATA(state ,listData){
       state.listData = listData
+    },
+    SAVE_COMMIT(state,commitList ){
+      state.commitList.unshift(commitList)
     },
     /*登录*/
     // 我们可以使用 ES2015 风格的计算属性命名功能来使用一个常量作为函数名

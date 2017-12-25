@@ -3,7 +3,7 @@
     <div class="about_tie" flex>
       <img class="author_pic" src="" alt="">
       <div class="about_author">
-        <h2>木子李</h2>
+        <h2>{{this.$store.state.user.username}}</h2>
         <p>
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-dianzan"></use>
@@ -60,7 +60,13 @@ export default {
         {aboutIcon:"#icon-settings",aboutName:"设置"},
       ]
     }
-  }
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+//       通过 `vm` 访问组件实例
+      vm.$emit("listenVue","关于")
+    })
+  },
 }
 </script>
 

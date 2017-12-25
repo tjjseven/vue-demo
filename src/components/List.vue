@@ -38,7 +38,7 @@
 //
 //    },
     mounted(){
-      console.log("mounted");
+//      console.log("mounted");
       /*keep-alive下 如果list组件只加载一次，无需if*/
       if(this.$store.state.listAjax)
       this.$ajax({
@@ -58,7 +58,7 @@
     },
     /*keep-alive组件激活*/
     activated(){
-      console.log("activated");
+//      console.log("activated");
     },
     methods:{
       ListMsg(data){

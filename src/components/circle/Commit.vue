@@ -3,38 +3,60 @@
     <div class="author" flex>
       <img class="author_pic" src="" alt="">
       <div class="author_left">
-        <h2>木子李</h2>
+        <h2>{{commits.comAuthor}}</h2>
         <p>人喜欢，人关注</p>
       </div>
     </div>
     <p>说说你的心情</p>
-    <textarea name="comTextarea" id="comTextarea" placeholder="请输入内容"></textarea>
+    <textarea name="comTextarea" id="comTextarea" placeholder="请输入内容" v-model="commits.comContent"></textarea>
     <div class="pic">
       <input type="file" id="" value="上传图片">
     </div>
-    <input type="submit" id="comSub" value="确定发布">
+    <input type="submit" id="comSub" value="确定发布" @click="subCom">
   </div>
 </template>
 
 <script>
+  import pubVue from '../../assets/js/pubVue'
   export default {
     name: 'Commit',
     data () {
       return {
-
+        commits : {
+          comAuthor : this.$store.state.user.username,
+          comContent : '',
+          comTime : '',
+          comReply : "回复"
+        }
+      }
+    },
+    methods:{
+      subCom(){
+        /*向circle传递数据*/
+//        var self = this;
+//        pubVue.$emit("commitInfo","Wo shi 数据");
+//        console.log(pubVue)
+//        sessionStorage.setItem("commitInfo",JSON.stringify(self.commits))
+        var date=new Date();
+        var year=date.getFullYear();
+        var month=date.getMonth()+1;
+        var day=date.getDate();
+        this.commits.comTime = year+"年"+month+"月"+day+"日";
+        console.log(this.commits)
+        this.$store.commit('SAVE_COMMIT', this.commits);
+        this.$router.replace({path:"/circle"})
 
       }
     },
-//    beforeRouteEnter (to, from, next) {
-//      next(vm => {
-        // 通过 `vm` 访问组件实例
-//        console.log(vm)
-//      })
-//    },
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+//       通过 `vm` 访问组件实例
+        vm.$emit("listenVue","说说")
+      })
+    },
 //    beforeRouteUpdate (to, from, next) {
 //
 //      console.log(vm)
-//
 //    },
 //    beforeRouteLeave (to, from, next) {
       // 导航离开该组件的对应路由时调用

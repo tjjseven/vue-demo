@@ -37,10 +37,9 @@ new Vue({
   }
 });
 router.beforeEach((to, from, next) => {
-  var auth = to.meta.auth;
-  var isLogin = Boolean(store.state.user.username) //true用户已登录， false用户未登录
-  console.log(to)
-  if (!auth && !isLogin && to.path !== '/login') {
+  var auth = to.meta.auth;//标记是否需要登录
+  var isLogin = Boolean(store.state.user.username); //true用户已登录， false用户未登录
+  if (auth && !isLogin && to.path !== '/login') {
     return next({
       path: '/login',
       query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由

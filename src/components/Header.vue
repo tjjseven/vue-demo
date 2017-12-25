@@ -77,7 +77,13 @@ export default {
     },
     commit(){
       this.headerL = "#icon-disclosureindicator";
-      this.$emit("listenHeader","说说")
+      var username = Boolean(this.$store.state.user.username);
+      if(username){
+        this.$emit("listenHeader","说说")
+      }else{
+        this.$emit("listenHeader","登录")
+      }
+
     },
     goBack(){
 //      console.log(this.headerC);
