@@ -14,10 +14,10 @@
           <span>{{listItem.province}}</span>
         </div>
         <div class="commitLove">
-            <svg class="icon" aria-hidden="true" :style="{color:listItem.follow  ? '#ffa6a6' : '#000'}">
+            <svg class="icon" aria-hidden="true" :style="{color:listItem.follow && isLogin ? '#ffa6a6' : '#000'}">
               <use xlink:href="#icon-xihuan"></use>
             </svg>
-          <span v-if="listItem.follow" :style="{color:'#ffa6a6'}">已关注</span>
+          <span v-if="listItem.follow && isLogin" :style="{color:'#ffa6a6'}">已关注</span>
           <span v-else>未关注</span>
         </div>
       </router-link>
@@ -32,6 +32,7 @@
     data () {
       return {
         listDetails : "详情",
+        isLogin : this.$store.state.user.username
       }
     },
 //    created(){
@@ -56,10 +57,6 @@
       this.$store.state.listAjax=false;
 
     },
-    /*keep-alive组件激活*/
-    activated(){
-//      console.log("activated");
-    },
     methods:{
       ListMsg(data){
         this.$emit("listenList",data);
@@ -67,11 +64,19 @@
     },
     computed:{
       followState(){
-        console.log("计算属性");
 //        此处如何获取当前index？？
 //        var follow = this.$store.state.listData[this.$store.state.listData.id].follow
 
       }
+    },
+    /*keep-alive组件激活*/
+    activated(){
+      console.log("activated计算属性");
+      this.isLogin = this.$store.state.user.username;
+//      return isLogin(){
+//        console.log("已缓存computed计算属性")
+//        return sessionStorage.getItem("user")
+//      },
     }
   }
 </script>

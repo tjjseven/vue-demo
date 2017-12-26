@@ -29,7 +29,11 @@ Mock.mock(
             "number": "@integer(100, 999)",//100-999
             "constellation" : "@constellation",//星座
             "email":"@email('163.com')",//邮箱
-            "id" : "@id"//身份证
+            "id" : "@id",//身份证
+            "userInfo" : {
+              "follow" : false,
+              "count" : ''
+            }
         }]
     }
 );

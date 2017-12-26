@@ -42,12 +42,13 @@
         <use xlink:href="#icon-you1"></use>
       </svg>
     </div>
-
+    <p flex="main:center" class="logout" @click="logOut">退出</p>
   </div>
 </template>
 
 <script>
-export default {
+  import {USER_LOGOUT} from '../../vuex/store'
+  export default {
   name: 'About',
   data () {
     return {
@@ -67,12 +68,18 @@ export default {
       vm.$emit("listenVue","关于")
     })
   },
+  methods:{
+    logOut(){
+      this.$store.dispatch(USER_LOGOUT);
+      this.$router.replace({path : "/login"})
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .about_tie,.about_list,ul{
+  .about_tie,.about_list,ul,.logout{
     background: #fff;
     margin-bottom: .7rem;
   }
@@ -85,7 +92,7 @@ export default {
   .about_author span{
     margin-right: 1rem;
   }
-  .about_list,.about_tie{
+  .about_list,.about_tie,.logout{
     padding: .6rem;
   }
   .about_list>span{

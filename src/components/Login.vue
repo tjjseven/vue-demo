@@ -36,7 +36,6 @@
     methods:{
       subData(){
         this.$store.dispatch(USER_LOGIN,this.user);
-        console.log(JSON.parse(sessionStorage.getItem('user')))
         /*跳转到登录之前的页面*/
         this.$router.replace({ path: this.$route.query.redirect })
       }

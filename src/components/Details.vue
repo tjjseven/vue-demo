@@ -6,7 +6,7 @@
         <h2>{{dsDate[num].constellation}}</h2>
         <p class="det_tag">{{dsDate[num].province}}</p>
         <p class="det_time">创建于{{dsDate[num].nowDate}}<span>原创</span></p>
-        <div class="det_followMe" @click="followMe" :class="{'is_follow': !follow, 'no_follow': follow}">
+        <div class="det_followMe" @click="followMe" :class="{'no_follow': !follow || !isLogin, 'is_follow': follow && isLogin}">
           {{followMsg}}</div>
       </div>
       <div class="det_con">
@@ -47,25 +47,50 @@
       this.num = this.$route.query.details;
       this.count = this.dsDate[this.num].count || ''*1;
 //      console.log(this.dsDate[this.num].count)
+
       this.follow = this.dsDate[this.num].follow || false;
-
       this.followMsg = this.follow ? "取消关注" : "+ 我关注";
+      console.log("created")
     },
-
+    computed:{
+      isLogin(){
+        if(!sessionStorage.getItem("user")){
+          this.followMsg = "+ 我关注";
+          return false
+        }
+        return true
+      }
+    },
     methods:{
       followMe(){
+        if(!sessionStorage.getItem("user")){
+          console.log(this.$route.fullPath)
+          this.$router.replace({ path: "/login",query: {redirect: this.$route.fullPath}});
+          return;
+        }
         this.follow = !this.follow;
-        this.followMsg = this.follow ? "取消关注" : "+ 我关注";
+        this.followMsg = this.follow  ? "取消关注" : "+ 我关注";
         /*向数组index对象中添加新的属性，不能更新视图*/
         /*this.dsDate[this.num].follow = this.follow;*/
         /*使用$set可更新*/
         this.$set(this.dsDate[this.num],'follow',this.follow)
       },
       saveCount(){
+        console.log(sessionStorage.getItem("user"))
+        if(!sessionStorage.getItem("user")){
+          this.$router.replace({ path: "/login",query: {redirect: this.$route.fullPath}});
+          return;
+        }
         this.count += 1;
 //        this.dsDate[this.num].count = this.count;
         this.$set(this.dsDate[this.num],'count',this.count)
       }
+    },
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+//       通过 `vm` 访问组件实例
+        vm.$emit("listenVue","详情")
+      })
     },
     beforeRouteLeave(to, from, next){
       console.log("离开详情路由");
@@ -105,11 +130,11 @@
       padding:.3rem;
       border-radius: .2rem;
     }
-    .is_follow{
+    .no_follow{
       border:1px solid #42b983;
       color: #42b983;
     }
-    .no_follow{
+    .is_follow{
       border:1px solid #ffa6a6;
       background: #ffa6a6;
       color: #fff;
@@ -149,7 +174,7 @@
       margin-right:.5rem;
     }
     p{
-      width: 5rem;
+      width: 6rem;
       height: 2rem;
       background: #e21313;
       display: inline-block;

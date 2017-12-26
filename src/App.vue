@@ -145,4 +145,9 @@ a.actClass{
   border-right-color: transparent;
   border-radius: 50%;
 }
+img.mescroll-totop{
+  display: none;
+  right: 1rem;
+  bottom:2.5rem;
+}
 </style>

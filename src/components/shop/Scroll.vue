@@ -38,7 +38,7 @@ export default{
         //以下参数可删除,不配置
         //page:{size:8}, //可配置每页8条数据,默认10
         toTop:{ //配置回到顶部按钮
-          src : "../res/img/mescroll-totop.png", //默认滚动到1000px显示,可配置offset修改
+          src : "dist/static/img/totop.jpg", //默认滚动到1000px显示,可配置offset修改
           //offset : 1000
         },
         empty:{ //配置列表无任何数据的提示
@@ -146,4 +146,5 @@ export default{
       margin-bottom: .3rem;
     }
   }
+
 </style>

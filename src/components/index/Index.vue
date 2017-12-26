@@ -31,6 +31,12 @@ export default {
       this.$emit("listenVue",data)
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+//       通过 `vm` 访问组件实例
+      vm.$emit("listenVue","主页")
+    })
+  },
   beforeRouteLeave(to, from, next){
     console.log(history.state)
     console.log("离开index路由");

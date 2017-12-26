@@ -22,10 +22,10 @@
     </li>
     <li v-else flex="main:center cross:center" @click="changeHeaderC">
       <svg class="icon" aria-hidden="true">
-        <use :xlink:href="headerR"></use>
+        <use :xlink:href="this.$store.state.headerRI"></use>
       </svg>
       <transition name="expand">
-        <ol v-if="!flag">
+        <ol v-if="this.$store.state.headerFlag">
           <li>
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-shaixuan"></use>
@@ -58,8 +58,8 @@ export default {
   data () {
     return {
       headerL :"#icon-svg36",
-      headerR:"#icon-zhankai",
-      flag : true,
+      headerR:"",
+      flag : '',
       isLeft : false,
       isTop : false
     }
@@ -67,13 +67,12 @@ export default {
   props : ["headerC"],
   methods: {
     changeHeaderC(){
-      if(this.flag){
-        this.headerR = "#icon-zhedie";
-        this.flag = false;
+      if(this.$store.state.headerFlag){
+        this.$store.state.headerRI = "#icon-zhankai";
       }else {
-        this.flag = true;
-        this.headerR = "#icon-zhankai";
+        this.$store.state.headerRI = "#icon-zhedie";
       }
+      this.$store.state.headerFlag=!this.$store.state.headerFlag
     },
     commit(){
       this.headerL = "#icon-disclosureindicator";
@@ -133,6 +132,7 @@ export default {
     color: #000;
     border-radius: .3rem;
     height: 4rem;
+    border: 1px solid #e9e9e9;
   }
   ol>li{
     height: 2rem;

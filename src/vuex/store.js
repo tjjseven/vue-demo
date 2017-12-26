@@ -15,7 +15,9 @@ const store = new Vuex.Store({
     listAjax : true,//判断是否发送ajax
     posState : '',//位置信息
     user: JSON.parse(sessionStorage.getItem('user')) || {},//用户信息
-    commitList : []//评论列表信息
+    commitList : [],//评论列表信息
+    headerFlag : false,
+    headerRI : '#icon-zhankai'
   },
   /*mutations更改state并保存到state*/
   mutations: {
@@ -52,7 +54,7 @@ const store = new Vuex.Store({
     },
     /*登出*/
     [USER_LOGOUT]({commit}){
-      commit(USER_LOGIN)
+      commit(USER_LOGOUT)
     }
   }
 

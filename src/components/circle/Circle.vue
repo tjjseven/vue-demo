@@ -115,6 +115,7 @@
           return this.myFilter.orderBy(this.loveList, 'count',-1 )
       },
       countFlag() {
+        console.log("未缓存computed计算属性")
         for (var i = 0; i < this.circleData.length; i++) {
           if (this.circleData[i].count) {
             return true
@@ -199,7 +200,8 @@
     padding:.5rem ;
   }
   .commit_list>li{
-    margin-bottom:1rem ;
+    padding:.5rem 0;
+    border-bottom: 1px solid #e4e4e4;
   }
   .com_author{
     flex: 1;
