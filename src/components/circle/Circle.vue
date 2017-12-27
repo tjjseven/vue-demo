@@ -144,16 +144,11 @@
 
     },
     mounted(){
-//      var self = this;
-//      pubVue.$on("commitInfo",(msg)=>{
-//        self.newCommit = msg
-////        this.commitList.push(msg)
-//      })
-//      console.log(this.newCommit)
-//      var commits = JSON.parse(sessionStorage.getItem("commitInfo"))
-//      this.commitList.unshift(commits)
+//     接收commit数据
+      pubVue.$on("commitInfo",(msg)=>{
+        console.log(msg)
+      })
 
-//      console.log(this.commitList)
     },
     beforeRouteEnter (to, from, next) {
       next(vm => {

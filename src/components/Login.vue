@@ -5,17 +5,19 @@
         <svg class="icon user_icon" aria-hidden="true">
           <use xlink:href="#icon-xingmingyonghumingnicheng"></use>
         </svg>
-        <input type="text" placeholder="用户名" v-model="user.username">
+        <input type="text" placeholder="用户名" v-model="user.username" @blur="ueBlur">
       </div>
     </div>
+    <p v-show="!user.username && leaveUe">请输入用户名</p>
     <div class="user_password">
       <div class="input_div">
         <svg class="icon user_icon" aria-hidden="true">
           <use xlink:href="#icon-mima"></use>
         </svg>
-        <input type="password" placeholder="密码" v-model="user.password">
+        <input type="password" placeholder="密码" v-model="user.password" @blur="pdBlur">
       </div>
     </div>
+    <p v-show="!user.password && leavePd">请输入密码</p>
     <input type="submit" id="sub" value="登录" @click="subData">
   </div>
 </template>
@@ -29,12 +31,24 @@
         user : {
           username : '',
           password : ''
-        }
-
+        },
+        leaveUe : false,
+        leavePd : false
       }
     },
     methods:{
+      ueBlur(){
+        if(!this.user.username){
+          this.leaveUe = true
+        }
+      },
+      pdBlur(){
+        if(!this.user.password){
+          this.leavePd = true
+        }
+      },
       subData(){
+        if(!this.user.username && !this.user.password)return;
         this.$store.dispatch(USER_LOGIN,this.user);
         /*跳转到登录之前的页面*/
         this.$router.replace({ path: this.$route.query.redirect })
@@ -57,6 +71,11 @@
     width: 100%;
     background: #fff;
     min-height: 100%;
+    text-align: center;
+  }
+  .login>p{
+    margin-top: .5rem;
+    color: red;
   }
   .user_name,.user_password{
     position: relative;

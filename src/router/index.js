@@ -15,7 +15,7 @@ Vue.use(Router);
 
 export default new Router({
   // mode: 'history',//HBuilder打包app不能使用
-  linkActiveClass: 'actClass',
+  linkExactActiveClass: 'actClass',
   saveScrollPosition: true,
   routes: [
     {

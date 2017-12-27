@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="about_tie" flex>
-      <img class="author_pic" src="" alt="">
+      <img class="author_pic" src="" alt="123">
       <div class="about_author">
         <h2>{{this.$store.state.user.username}}</h2>
         <p>
@@ -107,4 +107,6 @@
     border-left:1px solid #e7e7e7;
     border-right:1px solid #e7e7e7;
   }
+  /*img未指定src时，不显示img标签的边框*/
+  img[src=""],img:not([src]){opacity:0;}
 </style>

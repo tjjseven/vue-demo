@@ -33,16 +33,15 @@
     methods:{
       subCom(){
         /*向circle传递数据*/
-//        var self = this;
-//        pubVue.$emit("commitInfo","Wo shi 数据");
-//        console.log(pubVue)
-//        sessionStorage.setItem("commitInfo",JSON.stringify(self.commits))
+//        方法一
+        pubVue.$emit("commitInfo",this.commits.comContent);
+
         var date=new Date();
         var year=date.getFullYear();
         var month=date.getMonth()+1;
         var day=date.getDate();
         this.commits.comTime = year+"年"+month+"月"+day+"日";
-        console.log(this.commits)
+//        方法二
         this.$store.commit('SAVE_COMMIT', this.commits);
         this.$router.replace({path:"/circle"})
 
