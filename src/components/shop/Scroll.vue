@@ -112,7 +112,6 @@ export default{
           .catch(function(error) {
             errorCallback&&errorCallback();//失败回调
           });
-//    },500)
       }
 
     },
